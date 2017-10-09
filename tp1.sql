@@ -19,7 +19,7 @@ SELECT Nom,Age FROM INSCRIT;
 SELECT * FROM COURS;
 
 --4
-SELECT NomCours as Activité,Enseignant as Moniteur FROM COURS;
+SELECT NomCours as ActivitÃ©,Enseignant as Moniteur FROM COURS;
 
 --5
 SELECT Enseignant FROM COURS;
@@ -29,17 +29,17 @@ SELECT DISTINCT Enseignant FROM COURS;
 
 /*
 7. Afficher les cours de niveau Facile. 
-8. Afficher les inscrites (femmes) d'âge inférieure à 30, afficher nom et âge. 
+8. Afficher les inscrites (femmes) d'Ã¢ge infÃ©rieure Ã  30, afficher nom et Ã¢ge. 
 9. Trouver la liste des cours tenus le lundi et de cours tenus le mercredi.
-10. Afficher les inscrites (femmes) d'âge inférieure à 30 et des hommes d'âge supérieure ou égal à 25, afficher nom, âge, sexe. 
+10. Afficher les inscrites (femmes) d'Ã¢ge infÃ©rieure Ã  30 et des hommes d'Ã¢ge supÃ©rieure ou Ã©gal Ã  25, afficher nom, Ã¢ge, sexe. 
 11. Trouver les cours  tenus  le lundi ou le mercredi ou le vendredi ou le samedi. (utiliser "in".) 
-12. Afficher les cours tenus après 12h00, soit le lundi en salle II soit le vendredi en salle III. 
-13. Trouver les cours  enseignés par Jean et par Marie.
-14. Trouver les cours qui ne sont pas enseignés par Jean et par Marie. 
-15. Trouver la liste des inscrits d'une âge comprise entre 25 et 35. Utiliser "between". 
+12. Afficher les cours tenus aprÃ¨s 12h00, soit le lundi en salle II soit le vendredi en salle III. 
+13. Trouver les cours  enseignÃ©s par Jean et par Marie.
+14. Trouver les cours qui ne sont pas enseignÃ©s par Jean et par Marie. 
+15. Trouver la liste des inscrits d'une Ã¢ge comprise entre 25 et 35. Utiliser "between". 
 16. Trouver les cours dont l'enseignant est connu. 
 17. Trouver les cours dont l'enseignant n'est pas connu. 
-18. Donner la liste des cours tel que : si l’enseignant est connu alors il est Jean (soit l'enseignant n'est pas connu, soit il est Jean). 
+18. Donner la liste des cours tel que : si lâ€™enseignant est connu alors il est Jean (soit l'enseignant n'est pas connu, soit il est Jean). 
 */
 
 --7
@@ -79,9 +79,9 @@ SELECT * FROM COURS WHERE Enseignant IS NULL;
 SELECT * FROM COURS WHERE Enseignant IS NULL OR Enseignant='Jean';
 
 /*
-19. Afficher les cours en ordre alphabétique, Afficher tous les attributs. 
-20. Afficher les cours de niveau facile en ordre alphabétique, Afficher tous les attributs. 
-21. Afficher les enseignants en ordre alphabétique et les cours qu’ils enseignent en ordre alphabétique.
+19. Afficher les cours en ordre alphabÃ©tique, Afficher tous les attributs. 
+20. Afficher les cours de niveau facile en ordre alphabÃ©tique, Afficher tous les attributs. 
+21. Afficher les enseignants en ordre alphabÃ©tique et les cours quâ€™ils enseignent en ordre alphabÃ©tique.
 */
 
 --19
@@ -94,17 +94,17 @@ SELECT * FROM COURS WHERE Niveau='Facile' ORDER BY NomCours;
 SELECT * FROM COURS ORDER BY Enseignant,NomCours;
 
 /*
-22. Afficher  les noms, numéro des cartes des inscrits et les cours auxquels ils participent. 
-23. Afficher  les noms, numéro des cartes de tous les inscrits et les cours auxquels ils participent, s'ils participent quelque cours. 
-24. Trouver  les cours auxquels est enregistré Bonnard. 
+22. Afficher  les noms, numÃ©ro des cartes des inscrits et les cours auxquels ils participent. 
+23. Afficher  les noms, numÃ©ro des cartes de tous les inscrits et les cours auxquels ils participent, s'ils participent quelque cours. 
+24. Trouver  les cours auxquels est enregistrÃ© Bonnard. 
 25. Trouver  les inscrits au cours de Natation I et les inscrits au cours de Natation II. Afficher tous les attributs des inscrits. 
 26. Afficher nom, age des inscrits, nom des cours auxquels ils participent et niveau du cours. 
-27. Comme la requête précédente, mais afficher nom et âge aussi pour les inscrits qui ne participent à aucun cours. 
-28. Afficher  dans l'ordre: les enseignants, les cours qu'ils enseignent, les noms et sexe des inscrits. En ordre alphabétique par enseignant. 
-29. Trouver  les noms des inscrits qui participent à un cours enseigné par Jean. Afficher noms et cours. 
-30. Trouver les noms (et age) des inscrits qui ont la même age que Bonnard. 
+27. Comme la requÃªte prÃ©cÃ©dente, mais afficher nom et Ã¢ge aussi pour les inscrits qui ne participent Ã  aucun cours. 
+28. Afficher  dans l'ordre: les enseignants, les cours qu'ils enseignent, les noms et sexe des inscrits. En ordre alphabÃ©tique par enseignant. 
+29. Trouver  les noms des inscrits qui participent Ã  un cours enseignÃ© par Jean. Afficher noms et cours. 
+30. Trouver les noms (et age) des inscrits qui ont la mÃªme age que Bonnard. 
 31. Trouver les noms et age des inscrits plus vieux de Bonnard. 
-32. Trouver les noms et numéro de carte des inscrits qui participent à (au moins) un cours auquel participe Bonnard.
+32. Trouver les noms et numÃ©ro de carte des inscrits qui participent Ã  (au moins) un cours auquel participe Bonnard.
 */
 
 --22
@@ -188,23 +188,6 @@ SELECT Nom,Age										--avec sous requete
 FROM INSCRIT
 WHERE Age > (SELECT Age FROM INSCRIT WHERE Nom='Bonnard');
 --32
-
-/*
-SELECT DISTINCT INSCRIT.Nom,PARTICIPATION.Nocarte
-FROM COUR AS COURS2 JOIN PARTICIPATION AS PARTICIPATION2 ON COUR2.NomCours = PARTICIPATION2.NomCours  JOIN INSCRIT AS INSCRIT2 ON INSCRIT2.Nocarte=PARTICIPATION2.Nocarte JOIN INSCRIT JOIN PARTICIPATION ON INSCRIT.Nocarte = PARTICIPATION.Nocarte JOIN COURS ON PARTICIPATION.NomCours = COURS.NomCours,
-JOIN INSCRIT
-*/
-
-/*
-SELECT DISTINCT INSCRIT.Nom,PARTICIPATION.Nocarte
-FROM INSCRIT,PARTICIPATION,COURS,INSCRIT AS INSCRIT2,PARTICIPATION AS PARTICIPATION2,COURS AS COURS2
-
-WHERE INSCRIT.Nocarte = PARTICIPATION.Nocarte AND PARTICIPATION.NomCours = COURS.NomCours 
-AND INSCRIT2.Nocarte = PARTICIPATION2.Nocarte AND PARTICIPATION2.NomCours = COURS2.NomCours AND INSCRIT2.Nom='Bonnard'
-ORDER BY INSCRIT.Nom
-*/
-
-
 
 SELECT Nom,PARTICIPATION.Nocarte
 FROM INSCRIT JOIN PARTICIPATION ON INSCRIT.Nocarte = PARTICIPATION.Nocarte JOIN COURS ON PARTICIPATION.NomCours = COURS.NomCours
